@@ -1,23 +1,13 @@
 class Solution {
     public int distributeCandies(int[] candyType) {
-        
-        Arrays.sort(candyType);
-        
-        int c=0;
+                
+        HashSet<Integer> set=new HashSet<>();
         
         for(int i=0;i<candyType.length;i++)
         {
-            if(i!=candyType.length-1)
-            {
-            while(candyType[i] == candyType[i+1])
-            {
-                i++;
-                if(i==candyType.length-1)
-                    break;
-            }
-            }
-            c++;
+            set.add(candyType[i]);
         }
-        return Math.min(candyType.length/2,c);
+        
+        return Math.min(candyType.length/2,set.size());
     }
 }
