@@ -40,7 +40,7 @@ class Solution
 {
     //Function to calculate the span of stockâ€™s price for all n days.
     
-    static class Stock{
+    /*static class Stock{
         int val;
         int index;
         
@@ -51,17 +51,17 @@ class Solution
     }
     
     static Stack<Stock> stack;
+    */
+    
     public static int[] calculateSpan(int price[], int n)
     {
         // Your code here
-        stack=new Stack<>();
+        Stack<Integer> stack=new Stack<>();
         int[] ind=new int[n];
-        
-        boolean p=false;
         
         for(int i=0;i<n;i++)
         {
-                while(!stack.isEmpty() && stack.peek().val <= price[i])
+                while(!stack.isEmpty() && price[stack.peek()] <= price[i])
                 {
                     stack.pop();
                 }
@@ -72,10 +72,10 @@ class Solution
                 }
                 else
                 {
-                    ind[i]=stack.peek().index;
+                    ind[i]=stack.peek();
                 }
             
-            stack.push(new Stock(price[i],i));
+            stack.push(i);
         }
         for(int i=0;i<n;i++)
         {
