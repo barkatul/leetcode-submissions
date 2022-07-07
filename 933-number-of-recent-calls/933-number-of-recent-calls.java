@@ -1,33 +1,19 @@
 class RecentCounter {
     
-    ArrayDeque<Integer> dq;
+    ArrayDeque<Integer> queue;
     int c=0;
 
     public RecentCounter() {
         
-        dq=new ArrayDeque<>();
+        queue=new ArrayDeque<>();
         
     }
     
     public int ping(int t) {
         
-        while(!dq.isEmpty() && t-dq.peek() > 3000)
-        {
-            dq.pop();
-            c--;
-        }
-        if(dq.isEmpty())
-        {
-            c++;
-            dq.add(t);
-            return 1;
-        }
-        else
-        {
-            c++;
-            dq.add(t);
-            return c;
-        }
+        queue.add(t);
+        while (queue.peek() < t - 3000) queue.remove();
+        return queue.size();
     }
 }
 
