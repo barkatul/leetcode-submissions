@@ -1,52 +1,38 @@
 class CustomStack {
     
-    Stack<Integer> s=new Stack<>();
-    Stack<Integer> ss=new Stack<>();
-    int size=0;
-    int max;
-    
+    int arr[];
+    int count=0;
+
     public CustomStack(int maxSize) {
-        max=maxSize;
+        arr=new int[maxSize];
     }
     
     public void push(int x) {
-        if(size==max)
+        if(count==arr.length)
             return;
-        
-        size++;
-        s.push(x);
+        arr[count++]=x;
     }
     
     public int pop() {
-        if(size==0)
+        if(count==0)
             return -1;
         
-        size--;
-       return s.pop();
+        count--;
+        int temp=arr[count];
+        arr[count]=0;
+        
+        return temp;
     }
     
     public void increment(int k, int val) {
         
-        while(!s.isEmpty())
+        for(int i=0;i<k;i++)
         {
-            ss.push(s.pop());
-        }
-        
-        while(k>0)
-        {
-            k--;
-            
-            if(ss.isEmpty())
-            {
+            if(i==count)
                 break;
-            }
             
-            s.push(ss.pop()+val);
+            arr[i]=arr[i]+val;
             
-        }
-        while(!ss.isEmpty())
-        {
-            s.push(ss.pop());
         }
     }
 }
