@@ -18,10 +18,6 @@ class Solution {
     public int maxPathSum(TreeNode root) {
         
         max=root.val;
-        
-        if(root.left == null && root.right == null)
-            return root.val;
-        
         int a=path(root);
         
         return max;
