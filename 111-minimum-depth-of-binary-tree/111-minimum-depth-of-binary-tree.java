@@ -14,33 +14,25 @@
  * }
  */
 class Solution {
-    int min=Integer.MAX_VALUE;
     
     public int minDepth(TreeNode root) {
         
-        if(root==null)
+        if(root == null)
             return 0;
         
-        root=sol(root,1);
+        if(root.left == null && root.right==null)
+            return 1;
         
-        return min;
+        int min=100000;
+        
+        if(root.left!=null)
+            min=Math.min(min,minDepth(root.left));
+        
+        if(root.right!=null)
+            min=Math.min(min,minDepth(root.right));
+        
+        return min+1;
         
     }
-    private TreeNode sol(TreeNode node,int count){
-        
-        if(node==null)
-        {
-            return null;
-        }
-        
-        TreeNode left=sol(node.left,count+1);
-        TreeNode right=sol(node.right,count+1);
-        
-        if(left == null && right == null)
-        {
-            min=Math.min(min,count);
-        }
-        
-        return node;
-    }
+    
 }
