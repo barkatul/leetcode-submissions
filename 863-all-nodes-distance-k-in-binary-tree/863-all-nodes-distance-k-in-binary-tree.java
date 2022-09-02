@@ -70,6 +70,10 @@ class Solution {
         
         while(!q.isEmpty()){
                 
+            int n=q.size();
+            
+            for(int i=0;i<n;i++)
+            {
                 TreeNode cur=q.poll();
                 
                 if(cur.left != null)
@@ -82,6 +86,7 @@ class Solution {
                     q.offer(cur.right);
                     map.put(cur.right,cur);
                 }
+            }
         }
         
     }
