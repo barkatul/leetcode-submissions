@@ -28,8 +28,7 @@ class Solution {
             }
         else
         {
-            left = lowestCommonAncestor(root.left,p,q);
-            right = lowestCommonAncestor(root.right,p,q);
+            return root;
         }
         
         if(left == null)
