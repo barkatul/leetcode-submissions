@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.io.*;
@@ -23,7 +23,8 @@ class GFG{
             t--;
         }
     } 
-} // } Driver Code Ends
+} 
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -34,42 +35,34 @@ class Solution
     //Function to find if there is a celebrity in the party or not.
     int celebrity(int M[][], int n)
     {
+    	// code here 
     	Stack<Integer> stack=new Stack<>();
-    	
-    	for(int i=n-1;i>=0;i--)
-    	{
+    	for(int i=0;i<n;i++){
     	    stack.push(i);
     	}
     	
-    	while(stack.size()>=2)
-    	{
-    	    int a=stack.pop();
-    	    int b=stack.pop();
+    	while(stack.size()>1){
     	    
-    	    if(M[a][b] == 1)
-    	    {
-    	           stack.push(b);
-    	    }
+    	    int n1=stack.pop();
+    	    int n2=stack.pop();
+    	    
+    	    if(M[n1][n2] == 1)
+    	    stack.push(n2);
+    	    
     	    else
-    	    {
-    	        stack.push(a);
-    	    }
+    	    stack.push(n1);
     	}
     	
     	int a=stack.pop();
     	
-    	for(int i=0;i<n;i++)
-    	{
-    	    if(i==a){
-    	        continue;
-    	    }
+    	for(int i=0;i<n;i++){
+    	    if(i==a)
+    	    continue;
+    	    
     	    else{
     	        if(M[a][i] == 1 || M[i][a] == 0)
-    	        {
-    	            return -1;
-    	        }
+    	        return -1;
     	    }
-    	   
     	}
     	return a;
     }
