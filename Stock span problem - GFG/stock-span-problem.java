@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -32,56 +32,38 @@ class gfg
     
     
     
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 
 class Solution
 {
     //Function to calculate the span of stockâ€™s price for all n days.
-    
-    /*static class Stock{
-        int val;
-        int index;
-        
-        Stock(int val,int index){
-            this.val=val;
-            this.index=index;
-        }
-    }
-    
-    static Stack<Stock> stack;
-    */
-    
     public static int[] calculateSpan(int price[], int n)
     {
         // Your code here
         Stack<Integer> stack=new Stack<>();
-        int[] ind=new int[n];
+        int[] ans=new int[n];
         
-        for(int i=0;i<n;i++)
-        {
-                while(!stack.isEmpty() && price[stack.peek()] <= price[i])
-                {
-                    stack.pop();
-                }
-                
-                if(stack.isEmpty())
-                {
-                    ind[i]=-1;
-                }
-                else
-                {
-                    ind[i]=stack.peek();
-                }
+        for(int i=0;i<n;i++){
+            
+            while(!stack.empty() && price[stack.peek()] <= price[i]){
+                stack.pop();
+            }
+            
+            if(stack.empty())
+            ans[i]=-1;
+            
+            else
+            ans[i]=stack.peek();
             
             stack.push(i);
         }
-        for(int i=0;i<n;i++)
-        {
-            ind[i]=i-ind[i];
+        
+        for(int i=0;i<n;i++){
+            ans[i]=i-ans[i];
         }
-        return ind;
+        return ans;
     }
-    
 }
