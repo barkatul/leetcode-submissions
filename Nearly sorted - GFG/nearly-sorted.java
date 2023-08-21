@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -27,6 +27,7 @@ class gfg
     }
 }
 
+
 // } Driver Code Ends
 
 
@@ -35,22 +36,19 @@ class Solution
     //Function to return the sorted array.
     ArrayList <Integer> nearlySorted(int arr[], int num, int k)
     {
-        ArrayList<Integer> list=new ArrayList<>();
+        // your code here
         
+        ArrayList<Integer> list=new ArrayList<>();
         PriorityQueue<Integer> minH=new PriorityQueue<>();
         
-        for(int nums:arr)
-        {
-            minH.add(nums);
+        for(int i=0;i<arr.length;i++){
+            minH.add(arr[i]);
             
-            if(minH.size()>k)
-            {
+            if(minH.size()>k){
                 list.add(minH.poll());
             }
         }
-        
-        while(!minH.isEmpty())
-        {
+        while(minH.size()!=0){
             list.add(minH.poll());
         }
         return list;
